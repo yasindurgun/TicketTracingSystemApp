@@ -1,0 +1,19 @@
+﻿@page
+@model TicketTracingSystemApp.Pages.Tickets.CreateTicketFormModel
+@{
+}
+
+
+<form method="post">
+    <div style="margin: auto 0">
+        <input asp-for="TicketInput.Subject" />
+        <span asp-validation-for="TicketInput.Subject" />
+
+        <input asp-for="TicketInput.Description" />
+        <span asp-validation-for="TicketInput.Description" />
+        <select asp-for="TicketInput.Customer">
+            
+        </select>
+
+    </div>
+</form>
