@@ -11,8 +11,11 @@ namespace TicketTracingSystemApp.Models
         public string Id { get; set; } = Guid.NewGuid().ToString();
         public string Subject { get; set; }
         public string Description { get; set; }
+        public string CustomerId { get; set; }
         public Customer Customer { get; set; }
+        public string EmployeeId { get; set; }
         public Employee Employee { get; set; }
+        public string ManagerId { get; set; }
         public Manager Maneger { get; set; }
         public short LevelOfDifficulty { get; set; }
         public short Priority { get; set; }

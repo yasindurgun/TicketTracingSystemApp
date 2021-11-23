@@ -3,17 +3,21 @@
 @{
 }
 
+<div style="margin: auto 0; width: 100%;">
+    <form method="post">
 
-<form method="post">
-    <div style="margin: auto 0">
+        Subject:
         <input asp-for="TicketInput.Subject" />
         <span asp-validation-for="TicketInput.Subject" />
-
-        <input asp-for="TicketInput.Description" />
+        <br /> <br />
+        Description:
+        <input asp-for="TicketInput.Description"/>
         <span asp-validation-for="TicketInput.Description" />
-        <select asp-for="TicketInput.Customer">
-            
+        <br /><br />
+        <select asp-for="SelectedList" asp-items="Model.Options">
+            <option>Lütfen bir şirket seçiniz</option>
         </select>
-
-    </div>
-</form>
+        <br /><br />
+        <input type="submit" name="Save" value="Save" asp-page-handler="Save"/>
+    </form>
+</div>

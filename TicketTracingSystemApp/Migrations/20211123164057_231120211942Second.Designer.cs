@@ -3,15 +3,17 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using TicketTracingSystemApp.Models;
 
 namespace TicketTracingSystemApp.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    partial class ApplicationDbContextModelSnapshot : ModelSnapshot
+    [Migration("20211123164057_231120211942Second")]
+    partial class _231120211942Second
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -107,7 +109,7 @@ namespace TicketTracingSystemApp.Migrations
                     b.Property<short>("LevelOfDifficulty")
                         .HasColumnType("smallint");
 
-                    b.Property<string>("ManagerId")
+                    b.Property<string>("ManegerId")
                         .HasColumnType("nvarchar(450)");
 
                     b.Property<short>("Priority")
@@ -128,7 +130,7 @@ namespace TicketTracingSystemApp.Migrations
 
                     b.HasIndex("EmployeeId");
 
-                    b.HasIndex("ManagerId");
+                    b.HasIndex("ManegerId");
 
                     b.ToTable("Tickets");
                 });
@@ -154,7 +156,7 @@ namespace TicketTracingSystemApp.Migrations
 
                     b.HasOne("TicketTracingSystemApp.Models.Manager", "Maneger")
                         .WithMany()
-                        .HasForeignKey("ManagerId");
+                        .HasForeignKey("ManegerId");
 
                     b.Navigation("Customer");
 

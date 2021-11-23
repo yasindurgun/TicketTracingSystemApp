@@ -9,6 +9,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using TicketTracingSystemApp.Repositories;
+using TicketTracingSystemApp.Services;
 
 namespace TicketTracingSystemApp
 {
@@ -29,6 +30,8 @@ namespace TicketTracingSystemApp
             services.AddScoped<EmployeeRepository>();
             services.AddScoped<ManagerRepository>();
             services.AddScoped<TicketRepository>();
+            services.AddTransient<TicketCreateService>();
+            services.AddTransient<EmailSendService>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
