@@ -30,6 +30,7 @@ namespace TicketTracingSystemApp.Repositories
             return _db.Tickets.ToList();
         }
 
+
         public void Delete(string id)
         {
             var entity = Find(id);

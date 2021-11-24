@@ -1,5 +1,6 @@
 using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
@@ -22,11 +23,13 @@ namespace TicketTracingSystemApp.Pages.Tickets
             tcService = service;
             emailSendService = mailService;
         }
+        
         public List<SelectListItem> SelectListItems = new List<SelectListItem>();
         [BindProperty]
         public Ticket TicketInput { get; set; }
 
         [BindProperty]
+        [Required(ErrorMessage = "Þirket bilgisi boþ geçilemez")]
         public string SelectedList { get; set; }
         //public List<Customer> customers;
         //public List<SelectListItem> Customers;
@@ -53,8 +56,9 @@ namespace TicketTracingSystemApp.Pages.Tickets
             var email = cRepo.Find(SelectedList);
             if (ModelState.IsValid)
             {
-                tcService.Save(TicketInput, SelectedList);
+                tcService.Save(TicketInput, SelectedList, "Open");
                 emailSendService.SendEmail("bitirmeprojesi55@gmail.com",$"{email.Email}",$"Ticket takip no:{TicketInput.Id}","Yeni ticket açýldý.");
+                ViewData["Message"] = "Kayýt baþarýlýdýr";
             }
 
         }

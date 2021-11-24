@@ -15,7 +15,8 @@ namespace TicketTracingSystemApp.Services
             _ticketRepository = ticketRepository;
         }
 
-        public void Save(Ticket ticket, string customerId)
+     
+        public void Save(Ticket ticket, string customerId, string statu)
         {
             if (String.IsNullOrEmpty(ticket.Subject))
             {
@@ -36,6 +37,8 @@ namespace TicketTracingSystemApp.Services
                 throw new Exception("Description alanı en fazla 300 karakter olabilir.");
             }
             ticket.CustomerId= customerId;
+            ticket.Statu = statu;
+            ticket.CreateDate = DateTime.Now;
             _ticketRepository.Add(ticket);
         }
     }

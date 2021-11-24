@@ -3,6 +3,8 @@
 @{
 }
 
+<div>@ViewData["Message"]</div>
+<div asp-validation-summary="All"></div>
 <div style="margin: auto 0; width: 100%;">
     <form method="post">
 
@@ -11,13 +13,14 @@
         <span asp-validation-for="TicketInput.Subject" />
         <br /> <br />
         Description:
-        <input asp-for="TicketInput.Description"/>
+        <input asp-for="TicketInput.Description" />
         <span asp-validation-for="TicketInput.Description" />
         <br /><br />
-        <select asp-for="SelectedList" asp-items="Model.Options">
+        <select asp-for="SelectedList" asp-items="Model.Options" required>
             <option>Lütfen bir şirket seçiniz</option>
         </select>
+        <span asp-validation-for="SelectedList" />
         <br /><br />
-        <input type="submit" name="Save" value="Save" asp-page-handler="Save"/>
+        <input type="submit" name="Save" value="Save" asp-page-handler="Save" />
     </form>
 </div>
