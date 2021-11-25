@@ -23,62 +23,63 @@
         Description:
         @Model.Ticket.Description
     </p>
+
     <p>
-        Company: @Model.Customer.Name
+        Customer:
+        @Model.cName
     </p>
 
 
     <form method="post">
-        <input type="hidden" asp-for="Ticket.Subject" value="@Model.Ticket.Subject" />
-        <input type="hidden" asp-for="Ticket.Id" value="@Model.Id" />
+
 
         <div style="float:left">
             <div class="custom-control custom-radio">
-                <input type="radio" id="customRadio1" name="customRadio" class="custom-control-input" asp-for="Ticket.LevelOfDifficulty" value="Çok Kolay">
+                <input type="radio" id="customRadio1" name="customRadio" class="custom-control-input" asp-for="Ticket.LevelOfDifficulty" value="Çok Kolay" asp-route-id="@Model.levelOfdiff">
                 <label class="custom-control-label" for="customRadio1">Çok Kolay</label>
             </div>
             <div class="custom-control custom-radio">
-                <input type="radio" id="customRadio2" name="customRadio" class="custom-control-input" asp-for="Ticket.LevelOfDifficulty" value="Kolay">
+                <input type="radio" id="customRadio2" name="customRadio" class="custom-control-input" asp-for="Ticket.LevelOfDifficulty" value="Kolay" asp-route-id="@Model.levelOfdiff">
                 <label class="custom-control-label" for="customRadio2">Kolay</label>
             </div>
             <div class="custom-control custom-radio">
-                <input type="radio" id="customRadio3" name="customRadio" class="custom-control-input" asp-for="Ticket.LevelOfDifficulty" value="Orta">
+                <input type="radio" id="customRadio3" name="customRadio" class="custom-control-input" asp-for="Ticket.LevelOfDifficulty" value="Orta" asp-route-id="@Model.levelOfdiff">
                 <label class="custom-control-label" for="customRadio3">Orta</label>
             </div>
             <div class="custom-control custom-radio">
-                <input type="radio" id="customRadio4" name="customRadio" class="custom-control-input" asp-for="Ticket.LevelOfDifficulty" value="Zor">
+                <input type="radio" id="customRadio4" name="customRadio" class="custom-control-input" asp-for="Ticket.LevelOfDifficulty" value="Zor" asp-route-id="@Model.levelOfdiff">
                 <label class="custom-control-label" for="customRadio4">Zor</label>
             </div>
 
             <div class="custom-control custom-radio">
-                <input type="radio" id="customRadio5" name="customRadio" class="custom-control-input" asp-for="Ticket.LevelOfDifficulty" value="Çok zor">
+                <input type="radio" id="customRadio5" name="customRadio" class="custom-control-input" asp-for="Ticket.LevelOfDifficulty" value="Çok zor" asp-route-id="@Model.levelOfdiff">
                 <label class="custom-control-label" for="customRadio5">Çok Zor</label>
             </div>
         </div>
 
         <div style="float:right">
             <div class="custom-control custom-radio custom-control-inline">
-                <input type="radio" id="customRadioInline1" name="customRadioInline" class="custom-control-input">
+                <input type="radio" id="customRadioInline1" name="customRadioInline" asp-for="Ticket.Priority" value="5" class="custom-control-input" asp-route-id="@Model.priority">
                 <label class="custom-control-label" for="customRadioInline1">5</label>
             </div>
             <div class="custom-control custom-radio custom-control-inline">
-                <input type="radio" id="customRadioInline2" name="customRadioInline" class="custom-control-input">
+                <input type="radio" id="customRadioInline2" name="customRadioInline" asp-for="Ticket.Priority" value="4" class="custom-control-input" asp-route-id="@Model.priority">
                 <label class="custom-control-label" for="customRadioInline2">4</label>
             </div>
             <div class="custom-control custom-radio custom-control-inline">
-                <input type="radio" id="customRadioInline3" name="customRadioInline" class="custom-control-input">
+                <input type="radio" id="customRadioInline3" name="customRadioInline" asp-for="Ticket.Priority" value="3" class="custom-control-input" asp-route-id="@Model.priority">
                 <label class="custom-control-label" for="customRadioInline3">3</label>
             </div>
             <div class="custom-control custom-radio custom-control-inline">
-                <input type="radio" id="customRadioInline4" name="customRadioInline" class="custom-control-input">
+                <input type="radio" id="customRadioInline4" name="customRadioInline" asp-for="Ticket.Priority" value="2" class="custom-control-input" asp-route-id="@Model.priority">
                 <label class="custom-control-label" for="customRadioInline4">2</label>
             </div>
             <div class="custom-control custom-radio custom-control-inline">
-                <input type="radio" id="customRadioInline5" name="customRadioInline" class="custom-control-input">
+                <input type="radio" id="customRadioInline5" name="customRadioInline" asp-for="Ticket.Priority" value="1" class="custom-control-input" asp-route-id="@Model.priority">
                 <label class="custom-control-label" for="customRadioInline5">1</label>
             </div>
         </div>
 
-        <input type="submit" name="SetTechDetails" value="SetTechDetails" class="col" asp-page-handler="SetTechDetails" />
+        <input asp-route-id="@Model.Id" type="submit" name="SetTechDetails" value="SetTechDetails" class="col" asp-page-handler="SetTechDetails" />
     </form>
 </div>

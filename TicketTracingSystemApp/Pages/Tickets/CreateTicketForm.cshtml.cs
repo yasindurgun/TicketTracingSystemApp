@@ -52,7 +52,7 @@ namespace TicketTracingSystemApp.Pages.Tickets
 
         public void OnPostSave()
         {
-            OnGet();
+            
             var email = cRepo.Find(SelectedList);
             if (ModelState.IsValid)
             {
@@ -60,7 +60,7 @@ namespace TicketTracingSystemApp.Pages.Tickets
                 emailSendService.SendEmail("bitirmeprojesi55@gmail.com",$"{email.Email}",$"Ticket takip no:{TicketInput.Id}","Yeni ticket açýldý.");
                 ViewData["Message"] = "Kayýt baþarýlýdýr";
             }
-
+            OnGet();
         }
     }
 }

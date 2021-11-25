@@ -23,20 +23,31 @@ namespace TicketTracingSystemApp.Pages.Tickets
         [BindProperty]
         public Ticket Ticket { get; set; }
         public Customer Customer { get; set; }
+
+        [BindProperty]
+        public string levelOfdiff { get; set; }
+        [BindProperty]
+        public string priority { get; set; }
+        public string cName { get; set; }
         public void OnGet(string? id)
         {
             this.Id = id;
             Ticket = ticketRepo.Find(Id);
             Customer = cRepo.Find(Ticket.CustomerId);
+            cName = Customer.Name;
         }
 
-        public void OnPostSetTechDetails(string value)
+        public void OnPostSetTechDetails(string id, string customRadio, string customRadioInline)
         {
-          
-            if (ModelState.IsValid)
-            {
+                this.Id = id;
+                Ticket = ticketRepo.Find(Id);
+                Customer = cRepo.Find(Ticket.CustomerId);
+                levelOfdiff = customRadio;
+                priority = customRadioInline;
+                Ticket.LevelOfDifficulty = levelOfdiff;
+                Ticket.Priority = priority;
+                Ticket.Statu = "WaitingForAssignment";
                 ticketRepo.Update(Ticket);
-            }
         }
     }
 }
