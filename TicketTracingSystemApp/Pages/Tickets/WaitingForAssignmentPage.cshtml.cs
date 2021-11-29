@@ -7,6 +7,7 @@ using Microsoft.AspNetCore.Mvc.RazorPages;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using TicketTracingSystemApp.Models;
 using TicketTracingSystemApp.Repositories;
+using TicketTracingSystemApp.Services;
 
 namespace TicketTracingSystemApp.Pages.Tickets
 {
@@ -14,11 +15,12 @@ namespace TicketTracingSystemApp.Pages.Tickets
     {
         TicketRepository _ticketRepository;
         EmployeeRepository _employeeRepository;
-        //WaitingForAssignmetService service;
-        public WaitingForAssignmentPageModel(TicketRepository ticketRepository, EmployeeRepository employeeRepository)
+        Services.WaitingForAssignmentService _service;
+        public WaitingForAssignmentPageModel(TicketRepository ticketRepository, EmployeeRepository employeeRepository, WaitingForAssignmentService service)
         {
             _ticketRepository = ticketRepository;
             _employeeRepository = employeeRepository;
+            _service = service;
         }
         //public List<SelectListItem> SelectListItems = new List<SelectListItem>();
         public string Id { get; set; }
@@ -34,9 +36,7 @@ namespace TicketTracingSystemApp.Pages.Tickets
         public void OnGet()
         {
             Tickets = _ticketRepository.List();
-
             Employees = _employeeRepository.List();
-
             Options = Employees.Select(a =>
                                   new SelectListItem
                                   {

@@ -1,0 +1,40 @@
+﻿@page
+@model TicketTracingSystemApp.Pages.Tickets.CloseTaskPageModel
+@{
+}
+
+
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
+<form method="post">
+    <table class="table">
+        <thead>
+            <tr>
+                <th scope="col">Subject</th>
+                <th scope="col">Description</th>
+                <th scope="col">Employee</th>
+                <th scope="col">Assign Date</th>
+                <th scope="col">Close</th>
+            </tr>
+        </thead>
+        <tbody>
+            @for (int i = 0; i < Model.Tickets.Count; i++)
+            {
+                if (Model.Tickets[i].Statu == "Assigned")
+                {
+                    <tr>
+                        <td>@Model.Tickets[i].Subject</td>
+                        <td>@Model.Tickets[i].Description>
+                        <td>@Model.EmployesNames[i]</td>
+                        <td>@Model.Tickets[i].AssignDate</td>
+                       
+                        <td>
+                            
+                            <input asp-route-id="@Model.Tickets[i].Id" type="submit" name="Close" value="Close" class="col" asp-page-handler="Close" />
+                        </td>
+                    </tr>
+                }
+            }
+
+        </tbody>
+    </table>
+</form>
